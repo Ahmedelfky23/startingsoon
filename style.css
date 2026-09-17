@@ -1,0 +1,1821 @@
+/* ==========================================================================
+   PITTY OFFICIAL — STARTING SOON STREAMING SCENE
+   Wild West x Steampunk Frontier Aesthetic (Living Sky & Top-Left Lantern Edition)
+   ========================================================================== */
+
+/* --- LOCAL WESTERN FONTS --- */
+@font-face {
+  font-family: "Rye";
+  src: url("assets/fonts/Rye.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Smokum";
+  src: url("assets/fonts/Smokum.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IM Fell English SC";
+  src: url("assets/fonts/IM_Fell_English_SC.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- COLOR PALETTE & DESIGN TOKENS --- */
+:root {
+  --color-dark-brown: #24150d;
+  --color-deep-brown: #3a2112;
+  --color-rust: #8c3f1c;
+  --color-burnt-orange: #a95420;
+  --color-old-gold: #b77a28;
+  --color-aged-parchment: #d5a95d;
+  --color-light-parchment: #e4c982;
+  --color-cream-parchment: #fff5d6;
+  --color-muted-red: #7a2819;
+  --color-iron-dark: #120a05;
+  --color-brass-bright: #e5a842;
+  --color-brass-shadow: #59350e;
+
+  --font-western: "Rye", Georgia, serif;
+  --font-frontier: "Smokum", "Rye", serif;
+  --font-antique: "IM Fell English SC", "Times New Roman", serif;
+}
+
+/* --- RESET & OBS CANVAS STAGE --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0a0402;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-antique);
+  color: var(--color-aged-parchment);
+}
+
+/* 1920x1080 Scaled Stage for OBS */
+#stream-stage {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  min-width: 1920px;
+  min-height: 1080px;
+  overflow: hidden;
+  background-color: var(--color-dark-brown);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.95);
+  transform-origin: center center;
+}
+
+/* ==========================================================================
+   1. BACKGROUND & LIVING SKY SYSTEM
+   ========================================================================== */
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/nope_western_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Animated Sunbeam God-Rays Across the Sky */
+.sunbeams-layer {
+  position: absolute;
+  top: -20px;
+  left: 15%;
+  width: 70%;
+  height: 420px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 235, 175, 0.18) 0%,
+    rgba(229, 168, 66, 0.1) 45%,
+    transparent 75%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 2;
+  animation: sunbeamAtmosphere 8s ease-in-out infinite alternate;
+}
+
+@keyframes sunbeamAtmosphere {
+  0% {
+    opacity: 0.7;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px);
+  }
+}
+
+/* ==========================================================================
+   JORDAN PEELE ("NOPE") SPACE ALIEN OLD WESTERN DESERT MYSTERY
+   ========================================================================== */
+
+/* Cinematic Desert Twilight & Ominous Sky Overlay */
+.desert-twilight-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 520px;
+  background: linear-gradient(
+    180deg,
+    rgba(25, 12, 38, 0.35) 0%,
+    rgba(54, 22, 45, 0.22) 35%,
+    rgba(140, 60, 20, 0.12) 70%,
+    transparent 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Subtle Mysterious Desert Sky Anomaly & Horizon Luminescence */
+.desert-anomaly-haze {
+  position: absolute;
+  top: 80px;
+  left: 15%;
+  width: 70%;
+  height: 280px;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgba(255, 230, 160, 0.12) 0%,
+    rgba(213, 160, 80, 0.06) 45%,
+    transparent 80%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 2;
+  animation: anomalyGlowBreathe 12s ease-in-out infinite alternate;
+}
+
+@keyframes anomalyGlowBreathe {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.96) translateY(0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04) translateY(-10px);
+  }
+  100% {
+    opacity: 0.45;
+    transform: scale(0.98) translateY(3px);
+  }
+}
+
+/* ==========================================================================
+   ALIEN DISTANT SHINING STARS CANVAS
+   ========================================================================== */
+.alien-stars-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 480px;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* ==========================================================================
+   PERSISTENT BACKGROUND ALIEN UFO WITH VOLUMETRIC REAR LIGHTS & BEACONS
+   ========================================================================== */
+.bg-ufo-scene {
+  position: absolute;
+  top: 86px;
+  left: 1220px;
+  width: 240px;
+  height: 170px;
+  pointer-events: none;
+  z-index: 2.8; /* Deep in sky, behind translucent clouds (z-index 3) */
+  animation: bgUfoHoverDrift 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes bgUfoHoverDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  25% {
+    transform: translate3d(-20px, -8px, 0) rotate(0.8deg);
+  }
+  50% {
+    transform: translate3d(-8px, 10px, 0) rotate(-0.5deg);
+  }
+  75% {
+    transform: translate3d(16px, -4px, 0) rotate(1.8deg);
+  }
+  100% {
+    transform: translate3d(24px, 6px, 0) rotate(-1.2deg);
+  }
+}
+
+/* --- UFO BACKLIGHTS & PROPULSION ENGINE AURA (BEHIND THE CRAFT) --- */
+.ufo-backlights-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits directly behind craft body (z-index 2) */
+  pointer-events: none;
+}
+
+/* Broad atmospheric back-glow spreading up into the dark sky */
+.ufo-backlight-ambient {
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 400px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 70%,
+    rgba(66, 226, 184, 0.45) 0%,
+    rgba(94, 226, 255, 0.28) 35%,
+    rgba(168, 85, 247, 0.16) 60%,
+    transparent 85%
+  );
+  mix-blend-mode: screen;
+  filter: blur(8px);
+  animation: bgUfoAmbientPulse 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes bgUfoAmbientPulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 0.95;
+    transform: scale(1.08);
+  }
+}
+
+/* Volumetric Light Rays radiating upward and backward into the sky */
+.ufo-backlight-ray {
+  position: absolute;
+  bottom: 116px;
+  left: 120px;
+  width: 32px;
+  height: 240px;
+  transform-origin: bottom center;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(66, 226, 184, 0.65) 20%,
+    rgba(94, 226, 255, 0.4) 45%,
+    rgba(192, 132, 252, 0.18) 75%,
+    transparent 100%
+  );
+  clip-path: polygon(42% 100%, 58% 100%, 100% 0%, 0% 0%);
+  mix-blend-mode: screen;
+  filter: blur(1.5px);
+  pointer-events: none;
+}
+
+.ray-left-far {
+  transform: rotate(-44deg);
+  height: 220px;
+  opacity: 0.6;
+  animation: rayWaverLeftFar 7s ease-in-out infinite alternate;
+}
+.ray-left-mid {
+  transform: rotate(-22deg);
+  height: 260px;
+  opacity: 0.8;
+  animation: rayWaverLeftMid 6s ease-in-out infinite alternate;
+}
+.ray-center {
+  transform: rotate(0deg);
+  height: 280px;
+  width: 44px;
+  left: 114px;
+  opacity: 0.95;
+  animation: rayWaverCenter 4.8s ease-in-out infinite alternate;
+}
+.ray-right-mid {
+  transform: rotate(22deg);
+  height: 260px;
+  opacity: 0.8;
+  animation: rayWaverRightMid 6.2s ease-in-out infinite alternate;
+}
+.ray-right-far {
+  transform: rotate(44deg);
+  height: 220px;
+  opacity: 0.6;
+  animation: rayWaverRightFar 7.2s ease-in-out infinite alternate;
+}
+
+@keyframes rayWaverLeftFar {
+  0% { transform: rotate(-48deg) scaleY(0.9); opacity: 0.45; }
+  100% { transform: rotate(-40deg) scaleY(1.1); opacity: 0.75; }
+}
+@keyframes rayWaverLeftMid {
+  0% { transform: rotate(-25deg) scaleY(1.05); opacity: 0.65; }
+  100% { transform: rotate(-19deg) scaleY(0.92); opacity: 0.88; }
+}
+@keyframes rayWaverCenter {
+  0% { transform: rotate(-2deg) scaleY(0.95); opacity: 0.75; filter: blur(2px); }
+  100% { transform: rotate(2deg) scaleY(1.15); opacity: 1; filter: blur(1px); }
+}
+@keyframes rayWaverRightMid {
+  0% { transform: rotate(19deg) scaleY(0.94); opacity: 0.65; }
+  100% { transform: rotate(25deg) scaleY(1.08); opacity: 0.9; }
+}
+@keyframes rayWaverRightFar {
+  0% { transform: rotate(40deg) scaleY(1.08); opacity: 0.75; }
+  100% { transform: rotate(48deg) scaleY(0.9); opacity: 0.45; }
+}
+
+/* Concentrated rear thruster corona halo */
+.ufo-rear-thruster-halo {
+  position: absolute;
+  top: 14px;
+  left: 35px;
+  width: 170px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(94, 226, 255, 0.75) 30%,
+    rgba(66, 226, 184, 0.5) 60%,
+    transparent 85%
+  );
+  filter: blur(4px);
+  mix-blend-mode: screen;
+  animation: thrusterHaloPulse 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes thrusterHaloPulse {
+  0% { transform: scaleX(0.9) scaleY(0.85); opacity: 0.7; }
+  100% { transform: scaleX(1.12) scaleY(1.2); opacity: 1; }
+}
+
+/* Floating plasma exhaust particles escaping upward into night sky */
+.ufo-rear-plasma-pulses {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  width: 120px;
+  height: 100px;
+  pointer-events: none;
+}
+.plasma-pulse {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #4ee6b6 55%, transparent 80%);
+  filter: blur(1px);
+  opacity: 0;
+  animation: plasmaDriftUp 3.6s ease-out infinite;
+}
+.pp-1 { width: 14px; height: 14px; left: 25px; top: 20px; animation-delay: 0s; }
+.pp-2 { width: 18px; height: 18px; left: 55px; top: 15px; animation-delay: 1.2s; animation-duration: 4.2s; }
+.pp-3 { width: 12px; height: 12px; left: 85px; top: 22px; animation-delay: 2.3s; animation-duration: 3.2s; }
+
+@keyframes plasmaDriftUp {
+  0% { transform: translateY(0) scale(0.6); opacity: 0.8; }
+  60% { opacity: 0.6; }
+  100% { transform: translateY(-80px) scale(2.2); opacity: 0; }
+}
+
+/* --- THE CRAFT BODY & SENSORS --- */
+.bg-ufo-craft {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* In front of rear backlights */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bg-ufo-saucer-svg {
+  width: 230px;
+  height: 78px;
+  filter: drop-shadow(0 6px 16px rgba(10, 5, 2, 0.9));
+  transform-origin: center center;
+  animation: bgUfoMicroTilt 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgUfoMicroTilt {
+  0% { transform: rotate(-2.2deg); }
+  100% { transform: rotate(2deg); }
+}
+
+/* Ventral scanner light cone descending toward desert horizon */
+.bg-ufo-downward-cone {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 240px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(103, 232, 249, 0.22) 25%,
+    rgba(168, 85, 247, 0.08) 60%,
+    transparent 100%
+  );
+  clip-path: polygon(36% 0%, 64% 0%, 98% 100%, 2% 100%);
+  mix-blend-mode: screen;
+  filter: blur(2px);
+  pointer-events: none;
+  animation: downwardConePulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes downwardConePulse {
+  0% { opacity: 0.3; transform: translateX(-50%) scaleX(0.85); }
+  100% { opacity: 0.75; transform: translateX(-50%) scaleX(1.15); }
+}
+
+.bg-ufo-under-beam {
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 40px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(94, 226, 255, 0.35) 45%,
+    transparent 85%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.bg-aperture-pulse {
+  animation: bgApertureBreathe 3.4s ease-in-out infinite alternate;
+  transform-origin: 120px 54px;
+}
+
+@keyframes bgApertureBreathe {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.18); opacity: 1; }
+}
+
+/* Alien Navigation Perimeter Lights (Sequential chasing pulses) */
+.alien-beacon {
+  transform-origin: center center;
+  animation: alienBeaconChase 2.4s ease-in-out infinite;
+}
+
+.beacon-cyan {
+  fill: #5ee2ff;
+  filter: drop-shadow(0 0 6px #5ee2ff) drop-shadow(0 0 10px rgba(94, 226, 255, 0.8));
+}
+.beacon-emerald {
+  fill: #4ee6b6;
+  filter: drop-shadow(0 0 6px #4ee6b6) drop-shadow(0 0 10px rgba(78, 230, 182, 0.8));
+}
+.beacon-violet {
+  fill: #c084fc;
+  filter: drop-shadow(0 0 6px #c084fc) drop-shadow(0 0 10px rgba(192, 132, 252, 0.8));
+}
+.beacon-amber {
+  fill: #fde047;
+  filter: drop-shadow(0 0 6px #fde047) drop-shadow(0 0 10px rgba(253, 224, 71, 0.8));
+}
+
+.bc-1 { animation-delay: 0s; }
+.bc-2 { animation-delay: 0.25s; }
+.bc-3 { animation-delay: 0.5s; }
+.bc-4 { animation-delay: 0.75s; }
+.bc-5 { animation-delay: 1.0s; }
+.bc-6 { animation-delay: 1.25s; }
+.bc-7 { animation-delay: 1.5s; }
+.bc-8 { animation-delay: 1.75s; }
+.bc-9 { animation-delay: 2.0s; }
+
+@keyframes alienBeaconChase {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+  70% {
+    opacity: 0.55;
+    transform: scale(1.0);
+  }
+}
+
+/* Flyby UFO Volumetric Backlights */
+.ufo-flyby-backlights {
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  width: 220px;
+  height: 120px;
+  pointer-events: none;
+  z-index: -1;
+}
+.ufo-flyby-wake-glow {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 160px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(66, 226, 184, 0.6) 0%,
+    rgba(94, 226, 255, 0.3) 40%,
+    rgba(192, 132, 252, 0.15) 70%,
+    transparent 100%
+  );
+  filter: blur(6px);
+  mix-blend-mode: screen;
+  animation: thrusterHaloPulse 2.5s ease-in-out infinite alternate;
+}
+.ufo-flyby-light-ray {
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  width: 24px;
+  height: 160px;
+  transform-origin: bottom center;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(94, 226, 255, 0.5) 30%,
+    rgba(192, 132, 252, 0.2) 70%,
+    transparent 100%
+  );
+  clip-path: polygon(40% 100%, 60% 100%, 100% 0%, 0% 0%);
+  mix-blend-mode: screen;
+  filter: blur(1.5px);
+}
+.fr-1 { transform: rotate(-28deg); height: 140px; opacity: 0.7; }
+.fr-2 { transform: rotate(0deg); height: 170px; width: 34px; left: 95px; opacity: 0.9; }
+.fr-3 { transform: rotate(28deg); height: 140px; opacity: 0.7; }
+
+.alien-beacon-mini {
+  animation: alienBeaconChase 2s ease-in-out infinite;
+}
+.abm-1 { animation-delay: 0s; filter: drop-shadow(0 0 4px #4ee6b6); }
+.abm-2 { animation-delay: 0.5s; filter: drop-shadow(0 0 4px #5ee2ff); }
+.abm-3 { animation-delay: 1.0s; filter: drop-shadow(0 0 4px #c084fc); }
+.abm-4 { animation-delay: 1.5s; filter: drop-shadow(0 0 4px #fde047); }
+
+/* Imposing "NOPE" Desert Flying Saucer Craft — Much Bigger & Highly Visible */
+.desert-ufo-container {
+  position: absolute;
+  top: 0;
+  left: -240px; /* Controlled via JS */
+  width: 180px;
+  height: 125px;
+  pointer-events: none;
+  z-index: 4; /* Above clouds (z-index 3), below frame & foreground */
+  opacity: 0;
+  filter: drop-shadow(0 8px 24px rgba(10, 5, 2, 0.95)) blur(0.25px);
+  will-change: transform, opacity;
+}
+
+.ufo-body-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ufo-saucer-svg {
+  width: 175px;
+  height: 60px;
+  filter: drop-shadow(0 4px 10px rgba(14, 8, 4, 0.95));
+  transform-origin: center center;
+  animation: ufoMicroTilt 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes ufoMicroTilt {
+  0% {
+    transform: rotate(-2.8deg);
+  }
+  100% {
+    transform: rotate(2.4deg);
+  }
+}
+
+.ufo-aperture-core {
+  animation: apertureCoreBreathe 2.8s ease-in-out infinite alternate;
+  transform-origin: 100px 44px;
+}
+
+@keyframes apertureCoreBreathe {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* Ominous Downward Dust Updraft & Atmospheric Displacement Cone */
+.ufo-dust-updraft-cone {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 170px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 240, 200, 0.28) 0%,
+    rgba(220, 175, 100, 0.16) 35%,
+    rgba(169, 84, 32, 0.08) 65%,
+    transparent 90%
+  );
+  clip-path: polygon(32% 0%, 68% 0%, 96% 100%, 4% 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: updraftConeWaver 4s ease-in-out infinite alternate;
+}
+
+@keyframes updraftConeWaver {
+  0% {
+    opacity: 0.35;
+    transform: translateX(-50%) scaleX(0.9) skewX(-1.5deg);
+  }
+  100% {
+    opacity: 0.75;
+    transform: translateX(-50%) scaleX(1.12) skewX(1.5deg);
+  }
+}
+
+.ufo-dust-spiral {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 245, 220, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+  animation: dustSpiralRise 2.5s ease-out infinite;
+}
+
+.ds-1 { width: 18px; height: 18px; top: 20px; left: 45px; animation-delay: 0s; animation-duration: 2.2s; }
+.ds-2 { width: 26px; height: 26px; top: 60px; left: 55px; animation-delay: 0.8s; animation-duration: 2.8s; }
+.ds-3 { width: 34px; height: 34px; top: 105px; left: 35px; animation-delay: 1.5s; animation-duration: 3.1s; }
+
+@keyframes dustSpiralRise {
+  0% {
+    transform: translateY(40px) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20px) scale(1.6) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Soft Downward Ambient Luminescence */
+.ufo-under-beam {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 55px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 248, 225, 0.35) 0%,
+    rgba(235, 185, 90, 0.18) 45%,
+    transparent 85%
+  );
+  clip-path: polygon(25% 0%, 75% 0%, 92% 100%, 8% 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: ufoBeamPulse 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes ufoBeamPulse {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-50%) scaleX(0.85);
+  }
+  100% {
+    opacity: 0.65;
+    transform: translateX(-50%) scaleX(1.1);
+  }
+}
+
+/* Optional Subtle Distant Horizon Phenomenon (Tiny faint glimmer in far desert basin) */
+.desert-horizon-phenomenon {
+  position: absolute;
+  top: 480px;
+  left: 48.8%;
+  width: 6px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 246, 222, 0.8) 0%,
+    rgba(229, 168, 66, 0.35) 50%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 4px rgba(255, 235, 180, 0.75));
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 1.8s ease-in-out;
+}
+
+/* Multi-Layered Drifting Clouds Across Sky */
+.sky-clouds-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* High Altitude Golden Clouds */
+.clouds-track-primary {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 3840px;
+  height: 230px;
+  display: flex;
+  animation: driftSkyClouds 60s linear infinite;
+  opacity: 0.65;
+}
+
+/* Mid-Altitude Sunset Clouds */
+.clouds-track-secondary {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  width: 3840px;
+  height: 200px;
+  display: flex;
+  animation: driftSkyClouds 36s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes driftSkyClouds {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1920px);
+  }
+}
+
+.cloud-svg-block {
+  width: 1920px;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* Cinematic Soaring Desert Hawks Over Mesas — 8 Birds */
+.desert-hawks-container {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 1920px;
+  height: 320px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.hawk {
+  position: absolute;
+  fill: #3a2112;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* --- Hawk 1: Large, low crossing sweep --- */
+.hawk-1 {
+  width: 38px;
+  height: 19px;
+  fill: #2e1a0a;
+  animation: soarHawk1 22s ease-in-out infinite;
+}
+/* --- Hawk 2: Medium hawk, high altitude --- */
+.hawk-2 {
+  width: 22px;
+  height: 11px;
+  fill: #3a2112;
+  animation: soarHawk2 30s ease-in-out infinite;
+}
+/* --- Hawk 3: Small, quick dart --- */
+.hawk-3 {
+  width: 18px;
+  height: 9px;
+  fill: #4a2c16;
+  animation: soarHawk3 25s ease-in-out infinite;
+}
+/* --- Hawk 4: Tiny distant speck, very high --- */
+.hawk-4 {
+  width: 12px;
+  height: 6px;
+  fill: #5a3a20;
+  opacity: 0.75;
+  animation: soarHawk4 38s linear infinite;
+}
+/* --- Hawk 5: Wide glider, mid altitude --- */
+.hawk-5 {
+  width: 32px;
+  height: 11px;
+  fill: #241608;
+  animation: soarHawk5 18s ease-in-out infinite;
+}
+/* --- Hawk 6: Tiny dot far background --- */
+.hawk-6 {
+  width: 9px;
+  height: 5px;
+  fill: #6a4a2a;
+  opacity: 0.6;
+  animation: soarHawk6 45s linear infinite;
+}
+/* --- Hawk 7: Full-screen crossing hawk --- */
+.hawk-7 {
+  width: 28px;
+  height: 14px;
+  fill: #3a2112;
+  animation: soarHawk7 14s linear infinite;
+}
+/* --- Hawk 8: Very small background bird --- */
+.hawk-8 {
+  width: 13px;
+  height: 7px;
+  fill: #5e3a1e;
+  opacity: 0.65;
+  animation: soarHawk8 34s ease-in-out infinite;
+}
+
+/* Hawk flight paths — varied, across full 1920px stage */
+@keyframes soarHawk1 {
+  0%   { transform: translate(80px, 80px) rotate(-5deg) scaleX(1); opacity: 0.9; }
+  20%  { transform: translate(340px, 50px) rotate(3deg) scaleX(1); opacity: 1; }
+  40%  { transform: translate(660px, 110px) rotate(8deg) scaleX(1); opacity: 1; }
+  60%  { transform: translate(400px, 140px) rotate(-4deg) scaleX(-1); }
+  80%  { transform: translate(180px, 95px) rotate(-8deg) scaleX(-1); }
+  100% { transform: translate(80px, 80px) rotate(-5deg) scaleX(1); opacity: 0.9; }
+}
+@keyframes soarHawk2 {
+  0%   { transform: translate(1600px, 35px) rotate(6deg) scaleX(-1); opacity: 0.8; }
+  30%  { transform: translate(1200px, 18px) rotate(-5deg) scaleX(-1); }
+  55%  { transform: translate(900px, 55px) rotate(3deg) scaleX(-1); }
+  70%  { transform: translate(1100px, 30px) rotate(-6deg) scaleX(1); }
+  100% { transform: translate(1600px, 35px) rotate(6deg) scaleX(-1); opacity: 0.8; }
+}
+@keyframes soarHawk3 {
+  0%   { transform: translate(500px, 130px) rotate(-3deg); }
+  33%  { transform: translate(750px, 85px) rotate(7deg); }
+  66%  { transform: translate(350px, 60px) rotate(-8deg); }
+  100% { transform: translate(500px, 130px) rotate(-3deg); }
+}
+/* Hawk 4: slow linear drift across full width at very high altitude */
+@keyframes soarHawk4 {
+  0%   { transform: translate(-20px, 20px); opacity: 0; }
+  5%   { opacity: 0.75; }
+  95%  { opacity: 0.75; }
+  100% { transform: translate(1950px, 12px); opacity: 0; }
+}
+@keyframes soarHawk5 {
+  0%   { transform: translate(1100px, 60px) rotate(4deg) scaleX(-1); }
+  25%  { transform: translate(800px, 30px) rotate(-7deg) scaleX(-1); }
+  50%  { transform: translate(550px, 70px) rotate(5deg) scaleX(1); }
+  75%  { transform: translate(820px, 45px) rotate(-3deg) scaleX(1); }
+  100% { transform: translate(1100px, 60px) rotate(4deg) scaleX(-1); }
+}
+/* Hawk 6: very slow reverse-crossing tiny speck */
+@keyframes soarHawk6 {
+  0%   { transform: translate(1950px, 55px); opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { transform: translate(-20px, 30px); opacity: 0; }
+}
+/* Hawk 7: fast crossing the entire screen left to right */
+@keyframes soarHawk7 {
+  0%   { transform: translate(-60px, 100px) rotate(-6deg); opacity: 0; }
+  8%   { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translate(1970px, 65px) rotate(4deg); opacity: 0; }
+}
+@keyframes soarHawk8 {
+  0%   { transform: translate(1400px, 200px) rotate(3deg); }
+  40%  { transform: translate(1650px, 160px) rotate(-5deg); }
+  70%  { transform: translate(1850px, 210px) rotate(6deg); }
+  100% { transform: translate(1400px, 200px) rotate(3deg); }
+}
+
+/* Vintage parchment color grading */
+.bg-parchment-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 65% 35%,
+    rgba(228, 201, 130, 0.05) 0%,
+    rgba(169, 84, 32, 0.18) 55%,
+    rgba(26, 14, 8, 0.72) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   2. STRONG ATMOSPHERIC CANVAS (DUST, SANDSTORMS, TUMBLEWEED)
+   ========================================================================== */
+#atmosphereCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   3. FRAME & GEARS
+   ========================================================================== */
+.frame-border {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  border: 4px solid var(--color-deep-brown);
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.frame-border::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 2px dashed rgba(183, 122, 40, 0.6);
+}
+
+.corner-bracket {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-color: var(--color-rust);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 11;
+}
+
+.corner-tl {
+  top: 24px;
+  left: 24px;
+  border-width: 8px 0 0 8px;
+  border-image: linear-gradient(
+      to bottom right,
+      var(--color-brass-bright),
+      var(--color-rust)
+    )
+    1;
+}
+
+.corner-tr {
+  top: 24px;
+  right: 24px;
+  border-width: 8px 8px 0 0;
+  border-image: linear-gradient(
+      to bottom left,
+      var(--color-brass-bright),
+      var(--color-rust)
+    )
+    1;
+}
+
+.corner-bl {
+  bottom: 24px;
+  left: 24px;
+  border-width: 0 0 8px 8px;
+  border-image: linear-gradient(
+      to top right,
+      var(--color-brass-bright),
+      var(--color-rust)
+    )
+    1;
+}
+
+.corner-br {
+  bottom: 24px;
+  right: 24px;
+  border-width: 0 8px 8px 0;
+  border-image: linear-gradient(
+      to top left,
+      var(--color-brass-bright),
+      var(--color-rust)
+    )
+    1;
+}
+
+.rivet {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--color-brass-bright),
+    var(--color-brass-shadow)
+  );
+  border-radius: 50%;
+  box-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.9),
+    inset 0 0 1px #000;
+  z-index: 12;
+}
+
+/* Steampunk Rotating Gears — REALISTIC HEAVY GEARS USING gear2 ASSET */
+.gear-assembly {
+  position: absolute;
+  pointer-events: none;
+  z-index: 11;
+}
+
+.gear-cluster-tl {
+  top: -15px;
+  left: -15px;
+  width: 290px;
+  height: 290px;
+}
+
+.gear-cluster-br {
+  bottom: -15px;
+  right: -15px;
+  width: 310px;
+  height: 310px;
+}
+
+/* Real gear2 images — heavy, physical, mechanical Western gears matching theme (rust, burnt orange, old gold) */
+.real-gear {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Top-left: large gear in deep rusted iron & burnt orange (#8C3F1C, #A95420) */
+.gear2-tl-large {
+  top: -25px;
+  left: -25px;
+  width: 225px;
+  height: 225px;
+  transform-origin: center center;
+  filter: sepia(1) saturate(3) hue-rotate(-22deg) brightness(0.68) contrast(1.28) drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.95));
+  animation: spinNormalCW 38s linear infinite;
+}
+
+/* Top-left: smaller interlocking gear in antique brass & aged gold (#B77A28, #D5A95D) */
+.gear2-tl-small {
+  top: 115px;
+  left: 110px;
+  width: 130px;
+  height: 130px;
+  transform-origin: center center;
+  filter: sepia(1) saturate(2.4) hue-rotate(6deg) brightness(0.78) contrast(1.2) drop-shadow(3px 6px 12px rgba(0, 0, 0, 0.9));
+  animation: spinNormalCCW 24s linear infinite;
+  z-index: -1;
+}
+
+/* Bottom-right: large gear in deep rusted iron & burnt orange (#8C3F1C, #A95420) */
+.gear2-br-large {
+  bottom: -25px;
+  right: -25px;
+  width: 245px;
+  height: 245px;
+  transform-origin: center center;
+  filter: sepia(1) saturate(3) hue-rotate(-22deg) brightness(0.68) contrast(1.28) drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.95));
+  animation: spinNormalCW 34s linear infinite;
+}
+
+/* Bottom-right: smaller interlocking gear in antique brass & aged gold (#B77A28, #D5A95D) */
+.gear2-br-small {
+  bottom: 120px;
+  right: 115px;
+  width: 140px;
+  height: 140px;
+  transform-origin: center center;
+  filter: sepia(1) saturate(2.4) hue-rotate(6deg) brightness(0.78) contrast(1.2) drop-shadow(3px 6px 12px rgba(0, 0, 0, 0.9));
+  animation: spinNormalCCW 22s linear infinite;
+  z-index: -1;
+}
+
+/* Spin animation classes (kept for crest gears and general mechanical components) */
+.spin-cw-slow {
+  animation: spinNormalCW 38s linear infinite;
+}
+.spin-ccw-slow {
+  animation: spinNormalCCW 24s linear infinite;
+}
+.spin-cw-fast {
+  animation: spinNormalCW 16s linear infinite;
+}
+.spin-ccw-fast {
+  animation: spinNormalCCW 16s linear infinite;
+}
+
+@keyframes spinNormalCW {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinNormalCCW {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* ==========================================================================
+   4. VINTAGE HANGING LANTERN (CLEAR & PLACED ON THE TOP RIGHT CORNER)
+   ========================================================================== */
+.lantern-wrapper-right {
+  position: absolute;
+  top: 0;
+  right: 60px; /* Placed prominently on top right corner! */
+  width: 155px;
+  height: 310px;
+  z-index: 20; /* Above everything including the frame */
+  transform-origin: top center;
+  animation: lanternSwayRight 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes lanternSwayRight {
+  0%,
+  100% {
+    transform: rotate(-1.4deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+
+.lantern-chain {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 75px;
+}
+
+.lantern-svg {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 155px;
+  height: 240px;
+  filter: drop-shadow(6px 12px 16px rgba(0, 0, 0, 0.95));
+}
+
+.flame-group {
+  transform-origin: 70px 126px;
+  animation: liveFlame 0.28s ease-in-out infinite alternate;
+}
+
+@keyframes liveFlame {
+  0% {
+    transform: scale(0.96, 0.94) skewX(-1.5deg);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.06, 1.1) skewX(2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.94, 1.02) skewX(-0.8deg);
+    opacity: 0.88;
+  }
+}
+
+.lantern-light-cast-right {
+  position: absolute;
+  top: 140px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  transform: translate(50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 195, 85, 0.35) 0%,
+    rgba(230, 135, 35, 0.18) 35%,
+    rgba(140, 63, 28, 0.07) 65%,
+    transparent 80%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 19;
+  animation: lanternLightPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes lanternLightPulse {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  22% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  45% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+  68% {
+    opacity: 0.97;
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+}
+
+/* ==========================================================================
+   5. THE MASCOT (USING HIGH-RES mascot.png — CRISP & PERFECT)
+   ========================================================================== */
+.mascot-stage {
+  position: absolute;
+  left: 45px;
+  bottom: 0px;
+  width: 530px;
+  height: 720px;
+  z-index: 16;
+  pointer-events: none;
+}
+
+.mascot-pedestal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mascot-art {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom left;
+  filter: drop-shadow(6px 12px 24px rgba(0, 0, 0, 0.95));
+  transform-origin: bottom center;
+  animation: mascotAliveMotion 5.5s ease-in-out infinite;
+}
+
+@keyframes mascotAliveMotion {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-0.8deg);
+  }
+}
+
+/* Exact coordinates: x=45.0%, y=24.7% */
+.mascot-eye-glow {
+  position: absolute;
+  top: 24.7%;
+  left: 45%;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 190, 255, 0.9) 0%,
+    rgba(0, 110, 255, 0.4) 60%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: eyePupilPulse 3s ease-in-out infinite;
+}
+
+@keyframes eyePupilPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+/* ==========================================================================
+   6. CENTRAL COMPOSITION: TITLE + SOCIAL MEDIA IN THE MIDDLE
+   ========================================================================== */
+.center-display-column {
+  position: absolute;
+  top: 100px;
+  left: 540px;
+  right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 18;
+  pointer-events: none;
+}
+
+/* High-Contrast "PLAY ⚙ STREAM ⚙ CONQUER" Ribbon */
+.brand-crest-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 8px 34px;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 14, 8, 0.98) 0%,
+    rgba(42, 22, 12, 0.96) 50%,
+    rgba(18, 9, 4, 0.98) 100%
+  );
+  border: 2px solid var(--color-old-gold);
+  border-radius: 6px;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.9),
+    inset 0 0 12px rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(183, 122, 40, 0.35);
+}
+
+.crest-gear {
+  width: 24px;
+  height: 24px;
+  animation: spinNormalCW 14s linear infinite;
+  transform-origin: 50px 50px;
+  transform-box: view-box;
+  filter: drop-shadow(0 0 4px var(--color-brass-bright));
+}
+
+.crest-text-bold {
+  font-family: var(--font-western);
+  font-size: 24px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--color-cream-parchment);
+  text-shadow:
+    0 1px 0 #000,
+    0 2px 4px #000,
+    0 0 12px rgba(229, 168, 66, 0.65);
+}
+
+/* Main STARTING SOON Signboard */
+.title-banner {
+  position: relative;
+  text-align: center;
+  padding: 14px 54px;
+}
+
+.title-wood-plaque {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(36, 21, 13, 0.96) 0%,
+    rgba(58, 33, 18, 0.92) 50%,
+    rgba(22, 11, 6, 0.98) 100%
+  );
+  border: 3px solid var(--color-rust);
+  border-radius: 8px;
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.95),
+    inset 0 0 24px rgba(0, 0, 0, 0.85);
+  z-index: -1;
+}
+
+.title-wood-plaque::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid rgba(183, 122, 40, 0.6);
+  border-radius: 4px;
+}
+
+.main-title {
+  font-family: var(--font-western);
+  font-size: 96px;
+  line-height: 1.05;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--color-cream-parchment);
+
+  text-shadow:
+    0 1px 0 var(--color-brass-bright),
+    0 2px 0 var(--color-burnt-orange),
+    0 3px 0 var(--color-rust),
+    0 4px 0 var(--color-deep-brown),
+    0 6px 0 var(--color-dark-brown),
+    0 8px 0 #000,
+    0 10px 20px rgba(0, 0, 0, 0.95),
+    0 0 30px rgba(229, 168, 66, 0.45);
+
+  animation: titlePulse 6s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: brightness(1.08);
+  }
+}
+
+/* Sub-banner Plaque */
+.sub-banner {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-banner-badge {
+  background: rgba(26, 14, 8, 0.92);
+  border: 1px solid var(--color-old-gold);
+  padding: 6px 30px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.sub-title {
+  font-family: var(--font-frontier);
+  font-size: 28px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-light-parchment);
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* ==========================================================================
+   7. SOCIAL MEDIA PANEL — WIDE, LEGIBLE, UNCOMPRESSED VINTAGE TYPOGRAPHY
+   ========================================================================== */
+.middle-social-panel {
+  margin-top: 34px;
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  justify-content: center;
+}
+
+.social-wood-card-middle {
+  position: relative;
+  width: 100%;
+  padding: 15px 32px;
+  background: linear-gradient(
+    180deg,
+    rgba(34, 19, 11, 0.97) 0%,
+    rgba(50, 28, 16, 0.95) 50%,
+    rgba(22, 11, 6, 0.98) 100%
+  );
+  border: 2.5px solid var(--color-old-gold);
+  border-radius: 8px;
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.92),
+    inset 0 0 18px rgba(0, 0, 0, 0.85),
+    0 0 20px rgba(183, 122, 40, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.social-wood-card-middle::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px dashed rgba(229, 168, 66, 0.55);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.social-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 2px 8px;
+  flex: 1 1 auto;
+}
+
+.social-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-brass-bright);
+  filter: drop-shadow(1px 2px 4px #000);
+}
+
+.social-icon-wrapper svg {
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
+}
+
+.social-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.social-name {
+  font-family: var(--font-antique);
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  line-height: 1.2;
+  color: var(--color-brass-bright);
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 0 1px 2px #000;
+}
+
+.social-handle {
+  font-family: "Rokkitt", "Rye", var(--font-antique), Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  line-height: 1.25;
+  color: var(--color-cream-parchment);
+  text-shadow: 1px 2px 3px #000, 0 0 8px rgba(229, 168, 66, 0.25);
+  white-space: nowrap;
+}
+
+.social-rivet {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-brass-bright);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px #000;
+}
+
+.sr-tl {
+  top: 7px;
+  left: 7px;
+}
+.sr-tr {
+  top: 7px;
+  right: 7px;
+}
+.sr-bl {
+  bottom: 7px;
+  left: 7px;
+}
+.sr-br {
+  bottom: 7px;
+  right: 7px;
+}
+
+/* Standby Status Pill below Social */
+.stream-status-pill {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 32px;
+  background: rgba(20, 10, 5, 0.94);
+  border: 1px solid var(--color-rust);
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.85);
+}
+
+.status-dot {
+  width: 11px;
+  height: 11px;
+  background-color: var(--color-burnt-orange);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-burnt-orange);
+  animation: statusBlink 1.8s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.status-text {
+  font-family: var(--font-antique);
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--color-cream-parchment);
+  text-transform: uppercase;
+}
+
+.status-time {
+  font-family: var(--font-western);
+  font-size: 18px;
+  color: var(--color-brass-bright);
+  letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   STEAM PUFF VENTS (Gear Clusters)
+   ========================================================================== */
+.steam-vents-tl {
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  width: 80px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.steam-vents-br {
+  position: absolute;
+  bottom: 120px;
+  right: 120px;
+  width: 80px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.steam-puff {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 245, 0.55) 0%, rgba(220, 200, 170, 0.3) 50%, transparent 80%);
+  pointer-events: none;
+  animation: steamRise 3s ease-out infinite;
+}
+
+.sp-1 { width: 28px; height: 28px; bottom: 80px; left: 10px; animation-delay: 0s; animation-duration: 2.8s; }
+.sp-2 { width: 20px; height: 20px; bottom: 50px; left: 30px; animation-delay: 0.9s; animation-duration: 3.4s; }
+.sp-3 { width: 24px; height: 24px; bottom: 65px; left: 50px; animation-delay: 1.7s; animation-duration: 3.1s; }
+.sp-4 { width: 26px; height: 26px; bottom: 80px; left: 10px; animation-delay: 0.4s; animation-duration: 2.6s; }
+.sp-5 { width: 18px; height: 18px; bottom: 55px; left: 38px; animation-delay: 1.4s; animation-duration: 3.3s; }
+
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scale(0.4);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+    transform: translateY(-12px) scale(0.8);
+  }
+  60% {
+    opacity: 0.4;
+    transform: translateY(-55px) scale(1.4) translateX(6px);
+  }
+  100% {
+    transform: translateY(-100px) scale(2.2) translateX(12px);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   TITLE STAMP BADGE (behind "STARTING SOON")
+   ========================================================================== */
+.title-stamp-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  z-index: 0;
+  pointer-events: none;
+  animation: stampRotatePulse 12s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes stampRotatePulse {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 0.6; }
+  30%       { transform: translate(-50%, -50%) rotate(3deg) scale(1.04); opacity: 0.75; }
+  60%       { transform: translate(-50%, -50%) rotate(-2deg) scale(0.97); opacity: 0.55; }
+}
+
+/* ==========================================================================
+   TITLE SPARKS CANVAS
+   ========================================================================== */
+.title-sparks-canvas {
+  position: absolute;
+  top: -60px;
+  left: -80px;
+  width: calc(100% + 160px);
+  height: calc(100% + 120px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   ROPE BANNER (Top of screen)
+   ========================================================================== */
+.rope-banner {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 13;
+  animation: ropeWindSway 8s ease-in-out infinite;
+}
+
+@keyframes ropeWindSway {
+  0%, 100% { transform: scaleY(1); }
+  40%       { transform: scaleY(1.06); }
+  70%       { transform: scaleY(0.95); }
+}
+
+.rope-line {
+  width: 100%;
+  height: 60px;
+}
+
+/* Hanging gear/star tags from rope */
+.rope-tag {
+  position: absolute;
+  top: 20px;
+  font-size: 18px;
+  color: var(--color-old-gold);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+  opacity: 0.8;
+  transform-origin: top center;
+  animation: tagHang 5.5s ease-in-out infinite;
+}
+
+.rt-1 { left: calc(25% - 9px); animation-delay: 0.3s; animation-duration: 5.2s; }
+.rt-2 { left: calc(50% - 9px); animation-delay: 1.1s; animation-duration: 6.0s; }
+.rt-3 { left: calc(75% - 9px); animation-delay: 0.7s; animation-duration: 4.8s; }
+
+@keyframes tagHang {
+  0%, 100% { transform: rotate(-4deg); }
+  50%       { transform: rotate(4deg); }
+}
+

@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pitty Official — Starting Soon</title>
+    <meta
+      name="description"
+      content="Animated Starting Soon Stream Scene for Pitty Official Twitch Channel"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 1920x1080 Viewport Scaled Stream Stage for OBS -->
+    <div id="stream-stage">
+      <!-- 1. Background Layer -->
+      <div class="bg-layer" aria-hidden="true"></div>
+
+      <!-- Alien Distant Shining Stars Canvas (Upper Desert Sky) -->
+      <canvas id="alienStarsCanvas" class="alien-stars-canvas" aria-hidden="true"></canvas>
+
+      <!-- Animated Sunbeam God-Rays Across Sky -->
+      <div class="sunbeams-layer" aria-hidden="true"></div>
+
+      <!-- Atmospheric Twilight Sky Overlay (Jordan Peele "NOPE" Cinematic Palette) -->
+      <div class="desert-twilight-overlay" aria-hidden="true"></div>
+
+      <!-- Subtle Mysterious Desert Sky Anomaly & Haze -->
+      <div class="desert-anomaly-haze" aria-hidden="true"></div>
+
+      <!-- Optional Subtle Distant Horizon Phenomenon (Tiny faint glow in distant desert) -->
+      <div class="desert-horizon-phenomenon" id="desertHorizonPhenomenon" aria-hidden="true"></div>
+
+      <!-- Persistent Background Hovering Alien UFO with Rear Lights & Energy Aura -->
+      <div class="bg-ufo-scene" id="bgUfoScene" aria-hidden="true">
+        <!-- Volumetric light rays & plasma engine aura BEHIND the craft -->
+        <div class="ufo-backlights-container">
+          <div class="ufo-backlight-ambient"></div>
+          <div class="ufo-backlight-ray ray-left-far"></div>
+          <div class="ufo-backlight-ray ray-left-mid"></div>
+          <div class="ufo-backlight-ray ray-center"></div>
+          <div class="ufo-backlight-ray ray-right-mid"></div>
+          <div class="ufo-backlight-ray ray-right-far"></div>
+          <div class="ufo-rear-thruster-halo"></div>
+          <div class="ufo-rear-plasma-pulses">
+            <span class="plasma-pulse pp-1"></span>
+            <span class="plasma-pulse pp-2"></span>
+            <span class="plasma-pulse pp-3"></span>
+          </div>
+        </div>
+
+        <!-- The Saucer Craft Body with Alien Navigation Beacons & Aperture -->
+        <div class="bg-ufo-craft">
+          <!-- Downward Scanner Cone / Atmospheric Distortion -->
+          <div class="bg-ufo-downward-cone"></div>
+          <div class="bg-ufo-under-beam"></div>
+
+          <!-- Saucer SVG Craft with Metallic Steampunk Shading & Alien Multi-Color Lights -->
+          <svg class="bg-ufo-saucer-svg" viewBox="0 0 240 82" fill="none">
+            <!-- Outermost Hull Rim Bevel -->
+            <ellipse cx="120" cy="46" rx="112" ry="20" fill="#140D07" stroke="#4A321E" stroke-width="2.5" />
+            <ellipse cx="120" cy="44" rx="102" ry="15" fill="#22160E" stroke="#5E4027" stroke-width="2" />
+
+            <!-- Stepped Upper Hull Ridges -->
+            <ellipse cx="120" cy="38" rx="78" ry="12" fill="#180F09" stroke="#3D2817" stroke-width="1.5" />
+            <ellipse cx="120" cy="33" rx="56" ry="10" fill="#2E1D12" stroke="#6D4828" stroke-width="1.5" />
+
+            <!-- Cockpit Dome with Eerie Interior Glow -->
+            <ellipse cx="120" cy="26" rx="36" ry="9" fill="#120A05" stroke="#452D19" stroke-width="1.2" />
+            <ellipse cx="120" cy="24" rx="26" ry="5.5" fill="url(#bgDomeGrad)" opacity="0.85" />
+
+            <!-- Rear Engine Exhaust Vent Ports on upper rim -->
+            <path d="M42 37 C75 28, 165 28, 198 37" stroke="url(#bgRearThrustGrad)" stroke-width="3" opacity="0.85" fill="none" filter="url(#ufoGlowFilter)" />
+
+            <!-- Hull Rim Metallic Specular Highlight -->
+            <path d="M26 46 C55 58, 185 58, 214 46" stroke="#D5A95D" stroke-width="1.4" opacity="0.45" fill="none" />
+
+            <!-- Ominous Ventral Iris / Core Aperture -->
+            <ellipse cx="120" cy="54" rx="28" ry="7" fill="#0A0502" stroke="#8C5C2E" stroke-width="1.8" />
+            <ellipse cx="120" cy="54" rx="18" ry="4.5" fill="url(#bgApertureGrad)" class="bg-aperture-pulse" />
+
+            <!-- Alien Perimeter Navigation Beacons (Multi-colored pulsating lights) -->
+            <circle cx="28" cy="45" r="2.8" class="alien-beacon beacon-cyan bc-1" />
+            <circle cx="48" cy="49" r="3.0" class="alien-beacon beacon-emerald bc-2" />
+            <circle cx="72" cy="52" r="3.2" class="alien-beacon beacon-violet bc-3" />
+            <circle cx="98" cy="54" r="3.4" class="alien-beacon beacon-amber bc-4" />
+            <circle cx="120" cy="55" r="3.6" class="alien-beacon beacon-cyan bc-5" />
+            <circle cx="142" cy="54" r="3.4" class="alien-beacon beacon-amber bc-6" />
+            <circle cx="168" cy="52" r="3.2" class="alien-beacon beacon-violet bc-7" />
+            <circle cx="192" cy="49" r="3.0" class="alien-beacon beacon-emerald bc-8" />
+            <circle cx="212" cy="45" r="2.8" class="alien-beacon beacon-cyan bc-9" />
+
+            <defs>
+              <!-- Filter for glow -->
+              <filter id="ufoGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+              <!-- Rear Thruster Gradient -->
+              <linearGradient id="bgRearThrustGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4ee6b6" stop-opacity="0.2" />
+                <stop offset="25%" stop-color="#5ee2ff" stop-opacity="0.9" />
+                <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+                <stop offset="75%" stop-color="#c084fc" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#4ee6b6" stop-opacity="0.2" />
+              </linearGradient>
+              <!-- Dome Gradient -->
+              <radialGradient id="bgDomeGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.9" />
+                <stop offset="45%" stop-color="#22d3ee" stop-opacity="0.5" />
+                <stop offset="85%" stop-color="#0e7490" stop-opacity="0.2" />
+                <stop offset="100%" stop-color="#120A05" stop-opacity="0" />
+              </radialGradient>
+              <!-- Ventral Aperture Core Gradient -->
+              <radialGradient id="bgApertureGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+                <stop offset="35%" stop-color="#67e8f9" stop-opacity="0.85" />
+                <stop offset="70%" stop-color="#a855f7" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#0a0502" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Imposing "NOPE" Desert Flying Saucer Craft (Flyby) with Rear Lights -->
+      <div class="desert-ufo-container" id="desertUfoContainer" aria-hidden="true">
+        <!-- Volumetric rear wake lights for flyby saucer -->
+        <div class="ufo-flyby-backlights">
+          <div class="ufo-flyby-wake-glow"></div>
+          <div class="ufo-flyby-light-ray fr-1"></div>
+          <div class="ufo-flyby-light-ray fr-2"></div>
+          <div class="ufo-flyby-light-ray fr-3"></div>
+        </div>
+        <div class="ufo-body-wrap">
+          <!-- Ominous downward dust updraft & atmospheric distortion cone -->
+          <div class="ufo-dust-updraft-cone">
+            <div class="ufo-dust-spiral ds-1"></div>
+            <div class="ufo-dust-spiral ds-2"></div>
+            <div class="ufo-dust-spiral ds-3"></div>
+          </div>
+          <!-- Faint diffuse ambient underside glow -->
+          <div class="ufo-under-beam"></div>
+          <!-- Prominent 170px Saucer Silhouette with retro-western metallic depth and ominous aperture -->
+          <svg class="ufo-saucer-svg" viewBox="0 0 200 68" fill="none">
+            <!-- Outermost aerodynamic rim bevel & dark cast iron silhouette -->
+            <ellipse cx="100" cy="38" rx="92" ry="16" fill="#140D07" stroke="#4A321E" stroke-width="2" />
+            <ellipse cx="100" cy="36" rx="84" ry="12" fill="#22160E" stroke="#5E4027" stroke-width="1.5" />
+            <!-- Upper hood / stepped hull ridges -->
+            <ellipse cx="100" cy="31" rx="64" ry="9" fill="#180F09" />
+            <ellipse cx="100" cy="27" rx="46" ry="8" fill="#2E1D12" stroke="#6D4828" stroke-width="1.2" />
+            <!-- Smooth low-profile cockpit dome -->
+            <ellipse cx="100" cy="22" rx="30" ry="7.5" fill="#120A05" stroke="#452D19" stroke-width="1" />
+            <ellipse cx="100" cy="20" rx="20" ry="4" fill="#3D2817" opacity="0.75" />
+            <!-- Hull rim metallic highlight -->
+            <path d="M22 38 C45 48, 155 48, 178 38" stroke="#D5A95D" stroke-width="1.2" opacity="0.35" fill="none" />
+            <!-- Ominous central iris / atmospheric aperture emitter (Jordan Peele "NOPE" style) -->
+            <ellipse cx="100" cy="44" rx="22" ry="5.5" fill="#0A0502" stroke="#8C5C2E" stroke-width="1.5" />
+            <ellipse cx="100" cy="44" rx="14" ry="3.5" fill="url(#aperturePulseGrad)" class="ufo-aperture-core" />
+            <!-- Subtle hull sensor ports (alien beacons) -->
+            <circle cx="56" cy="39" r="2.2" fill="#4ee6b6" class="alien-beacon-mini abm-1" />
+            <circle cx="76" cy="41" r="2.4" fill="#5ee2ff" class="alien-beacon-mini abm-2" />
+            <circle cx="124" cy="41" r="2.4" fill="#c084fc" class="alien-beacon-mini abm-3" />
+            <circle cx="144" cy="39" r="2.2" fill="#fde047" class="alien-beacon-mini abm-4" />
+            <defs>
+              <radialGradient id="aperturePulseGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFF3D1" stop-opacity="0.9" />
+                <stop offset="45%" stop-color="#E5A842" stop-opacity="0.6" />
+                <stop offset="85%" stop-color="#7A3E15" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#0A0502" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 2. Visible Living Sky System (Drifting Cloud Tracks & Soaring Hawks) -->
+      <div class="sky-clouds-viewport" aria-hidden="true">
+        <!-- High Cumulus Clouds Track -->
+        <div class="clouds-track-primary">
+          <svg class="cloud-svg-block" viewBox="0 0 1920 220" fill="none">
+            <path
+              d="M120 150 C140 100, 210 90, 260 120 C300 70, 410 80, 440 130 C490 120, 540 140, 560 175 L90 175 Z"
+              fill="#FFF5D6"
+              opacity="0.45"
+            />
+            <path
+              d="M720 130 C750 70, 850 70, 900 105 C940 60, 1060 70, 1100 115 C1150 105, 1210 125, 1230 160 L690 160 Z"
+              fill="#E4C982"
+              opacity="0.4"
+            />
+            <path
+              d="M1380 140 C1410 80, 1510 85, 1560 120 C1600 75, 1720 85, 1760 130 C1810 120, 1870 140, 1890 170 L1340 170 Z"
+              fill="#FFF5D6"
+              opacity="0.45"
+            />
+          </svg>
+          <svg class="cloud-svg-block" viewBox="0 0 1920 220" fill="none">
+            <path
+              d="M120 150 C140 100, 210 90, 260 120 C300 70, 410 80, 440 130 C490 120, 540 140, 560 175 L90 175 Z"
+              fill="#FFF5D6"
+              opacity="0.45"
+            />
+            <path
+              d="M720 130 C750 70, 850 70, 900 105 C940 60, 1060 70, 1100 115 C1150 105, 1210 125, 1230 160 L690 160 Z"
+              fill="#E4C982"
+              opacity="0.4"
+            />
+            <path
+              d="M1380 140 C1410 80, 1510 85, 1560 120 C1600 75, 1720 85, 1760 130 C1810 120, 1870 140, 1890 170 L1340 170 Z"
+              fill="#FFF5D6"
+              opacity="0.45"
+            />
+          </svg>
+        </div>
+
+        <!-- Secondary Mid-Sky Clouds Track -->
+        <div class="clouds-track-secondary">
+          <svg class="cloud-svg-block" viewBox="0 0 1920 180" fill="none">
+            <path
+              d="M380 110 C410 65, 490 60, 540 90 C580 50, 680 60, 710 100 C750 90, 810 110, 830 140 L350 140 Z"
+              fill="#E4C982"
+              opacity="0.35"
+            />
+            <path
+              d="M1080 120 C1110 75, 1200 70, 1250 105 C1290 65, 1390 75, 1420 115 C1460 105, 1520 125, 1540 155 L1040 155 Z"
+              fill="#D5A95D"
+              opacity="0.35"
+            />
+          </svg>
+          <svg class="cloud-svg-block" viewBox="0 0 1920 180" fill="none">
+            <path
+              d="M380 110 C410 65, 490 60, 540 90 C580 50, 680 60, 710 100 C750 90, 810 110, 830 140 L350 140 Z"
+              fill="#E4C982"
+              opacity="0.35"
+            />
+            <path
+              d="M1080 120 C1110 75, 1200 70, 1250 105 C1290 65, 1390 75, 1420 115 C1460 105, 1520 125, 1540 155 L1040 155 Z"
+              fill="#D5A95D"
+              opacity="0.35"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Soaring Desert Hawks Over Mesas — 8 BIRDS -->
+      <div class="desert-hawks-container" aria-hidden="true">
+        <!-- Bird 1: Large hawk, low sweep -->
+        <svg class="hawk hawk-1" viewBox="0 0 40 20">
+          <path d="M0 7 C10 0, 18 6, 20 11 C22 6, 30 0, 40 7 C31 11, 25 13, 20 20 C15 13, 9 11, 0 7 Z"/>
+        </svg>
+        <!-- Bird 2: Medium hawk, high -->
+        <svg class="hawk hawk-2" viewBox="0 0 32 16">
+          <path d="M0 6 C8 0, 14 5, 16 9 C18 5, 24 0, 32 6 C25 9, 20 10, 16 16 C12 10, 7 9, 0 6 Z"/>
+        </svg>
+        <!-- Bird 3: Small hawk, mid -->
+        <svg class="hawk hawk-3" viewBox="0 0 26 13">
+          <path d="M0 5 C6 0, 11 4, 13 7 C15 4, 20 0, 26 5 C20 8, 16 9, 13 13 C10 9, 6 8, 0 5 Z"/>
+        </svg>
+        <!-- Bird 4: Tiny distant bird -->
+        <svg class="hawk hawk-4" viewBox="0 0 18 9">
+          <path d="M0 3 C4 0, 8 3, 9 5 C10 3, 14 0, 18 3 C14 5, 11 6, 9 9 C7 6, 4 5, 0 3 Z"/>
+        </svg>
+        <!-- Bird 5: Wide glider -->
+        <svg class="hawk hawk-5" viewBox="0 0 48 16">
+          <path d="M0 6 C12 0, 20 5, 24 9 C28 5, 36 0, 48 6 C38 10, 30 11, 24 16 C18 11, 10 10, 0 6 Z"/>
+        </svg>
+        <!-- Bird 6: Tiny dot-speck far away -->
+        <svg class="hawk hawk-6" viewBox="0 0 14 7">
+          <path d="M0 2 C3 0, 6 2, 7 4 C8 2, 11 0, 14 2 C11 4, 9 5, 7 7 C5 5, 3 4, 0 2 Z"/>
+        </svg>
+        <!-- Bird 7: Full screen crossing hawk -->
+        <svg class="hawk hawk-7" viewBox="0 0 36 18">
+          <path d="M0 7 C9 0, 16 5, 18 10 C20 5, 27 0, 36 7 C28 11, 22 12, 18 18 C14 12, 8 11, 0 7 Z"/>
+        </svg>
+        <!-- Bird 8: Very small background bird -->
+        <svg class="hawk hawk-8" viewBox="0 0 20 10">
+          <path d="M0 4 C5 0, 9 3, 10 5 C11 3, 15 0, 20 4 C16 6, 12 7, 10 10 C8 7, 4 6, 0 4 Z"/>
+        </svg>
+      </div>
+
+      <!-- Steam Puff Vents at Gear Clusters -->
+      <div class="steam-vents-tl" aria-hidden="true">
+        <div class="steam-puff sp-1"></div>
+        <div class="steam-puff sp-2"></div>
+        <div class="steam-puff sp-3"></div>
+      </div>
+      <div class="steam-vents-br" aria-hidden="true">
+        <div class="steam-puff sp-4"></div>
+        <div class="steam-puff sp-5"></div>
+      </div>
+
+      <div class="bg-parchment-overlay" aria-hidden="true"></div>
+
+      <!-- 3. Strong Atmospheric Dust & Wind Canvas -->
+      <canvas id="atmosphereCanvas"></canvas>
+
+      <!-- 4. Steampunk Rotating Gears — REALISTIC HEAVY GEARS USING gear2 -->
+      <!-- Top-Left Cluster -->
+      <div class="gear-assembly gear-cluster-tl" aria-hidden="true">
+        <!-- Large primary gear from gear2 asset -->
+        <img
+          src="assets/gear2.png"
+          alt=""
+          class="real-gear gear2-tl-large spin-cw-slow"
+        />
+        <!-- Interlocking secondary gear from gear2 asset -->
+        <img
+          src="assets/gear2.png"
+          alt=""
+          class="real-gear gear2-tl-small spin-ccw-slow"
+        />
+      </div>
+
+      <!-- Bottom-Right Cluster — REALISTIC HEAVY GEARS USING gear2 -->
+      <div class="gear-assembly gear-cluster-br" aria-hidden="true">
+        <!-- Large primary gear from gear2 asset -->
+        <img
+          src="assets/gear2.png"
+          alt=""
+          class="real-gear gear2-br-large spin-cw-slow"
+        />
+        <!-- Interlocking secondary gear from gear2 asset -->
+        <img
+          src="assets/gear2.png"
+          alt=""
+          class="real-gear gear2-br-small spin-ccw-slow"
+        />
+      </div>
+
+      <!-- 5. Vintage Hanging Oil Lantern (TOP RIGHT CORNER) -->
+      <div class="lantern-wrapper-right" aria-hidden="true">
+        <svg class="lantern-chain" viewBox="0 0 12 75">
+          <line
+            x1="6"
+            y1="0"
+            x2="6"
+            y2="75"
+            stroke="#1A120B"
+            stroke-width="5"
+            stroke-dasharray="9 3"
+          />
+        </svg>
+
+        <svg class="lantern-svg" viewBox="0 0 140 220" fill="none">
+          <!-- Top ring & cap -->
+          <circle
+            cx="70"
+            cy="18"
+            r="13"
+            stroke="#59350E"
+            stroke-width="4"
+            fill="none"
+          />
+          <path
+            d="M48 30 L92 30 L86 45 L54 45 Z"
+            fill="#B77A28"
+            stroke="#3A2112"
+            stroke-width="2.5"
+          />
+          <path
+            d="M38 45 L102 45 L96 62 L44 62 Z"
+            fill="#8C3F1C"
+            stroke="#24150D"
+            stroke-width="2.5"
+          />
+
+          <!-- Wire side arms -->
+          <path
+            d="M44 54 C 18 65, 16 120, 22 165 C 24 175, 45 180, 50 182"
+            stroke="#3A2112"
+            stroke-width="4.5"
+            fill="none"
+          />
+          <path
+            d="M96 54 C 122 65, 124 120, 118 165 C 116 175, 95 180, 90 182"
+            stroke="#3A2112"
+            stroke-width="4.5"
+            fill="none"
+          />
+
+          <!-- Glass Globe -->
+          <ellipse
+            cx="70"
+            cy="115"
+            rx="36"
+            ry="48"
+            fill="rgba(255, 235, 180, 0.25)"
+            stroke="#59350E"
+            stroke-width="2.8"
+          />
+          <ellipse cx="70" cy="115" rx="36" ry="48" fill="url(#glassGrad)" />
+
+          <!-- Bright Clear Flame Dead Center Inside Glass -->
+          <g class="flame-group">
+            <ellipse cx="70" cy="120" rx="10" ry="20" fill="url(#flameOuter)" />
+            <ellipse cx="70" cy="123" rx="6" ry="13" fill="url(#flameInner)" />
+            <ellipse cx="70" cy="126" rx="3" ry="7" fill="#FFFFFF" />
+          </g>
+
+          <!-- Guard Wires over glass -->
+          <line
+            x1="70"
+            y1="68"
+            x2="70"
+            y2="162"
+            stroke="#59350E"
+            stroke-width="2"
+          />
+          <path
+            d="M46 88 C 60 96, 80 96, 94 88"
+            stroke="#59350E"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M40 115 C 58 126, 82 126, 100 115"
+            stroke="#59350E"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M46 142 C 60 150, 80 150, 94 142"
+            stroke="#59350E"
+            stroke-width="2"
+            fill="none"
+          />
+
+          <!-- Burner Base & Oil Tank Reservoir -->
+          <rect
+            x="46"
+            y="162"
+            width="48"
+            height="12"
+            rx="2"
+            fill="#B77A28"
+            stroke="#3A2112"
+            stroke-width="2"
+          />
+          <path
+            d="M33 174 L107 174 L100 206 L40 206 Z"
+            fill="#8C3F1C"
+            stroke="#24150D"
+            stroke-width="3"
+          />
+          <rect x="38" y="206" width="64" height="8" rx="2" fill="#3A2112" />
+
+          <defs>
+            <radialGradient id="glassGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FFAE42" stop-opacity="0.45" />
+              <stop offset="65%" stop-color="#D5A95D" stop-opacity="0.15" />
+              <stop offset="100%" stop-color="#24150D" stop-opacity="0.05" />
+            </radialGradient>
+            <linearGradient id="flameOuter" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FF4500" />
+              <stop offset="40%" stop-color="#FF9800" />
+              <stop offset="100%" stop-color="#FFEB3B" />
+            </linearGradient>
+            <linearGradient id="flameInner" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFEB3B" />
+              <stop offset="100%" stop-color="#FFFFFF" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Dynamic Light Cast Glow -->
+        <div id="lanternLightCast" class="lantern-light-cast-right"></div>
+      </div>
+
+      <!-- 6. Outer Weathered Frame & Rivets -->
+      <div class="frame-border" aria-hidden="true"></div>
+      <div class="corner-bracket corner-tl" aria-hidden="true"></div>
+      <div class="corner-bracket corner-tr" aria-hidden="true"></div>
+      <div class="corner-bracket corner-bl" aria-hidden="true"></div>
+      <div class="corner-bracket corner-br" aria-hidden="true"></div>
+
+      <div class="rivet" style="top: 29px; left: 105px"></div>
+      <div class="rivet" style="top: 29px; left: 500px"></div>
+      <div class="rivet" style="top: 29px; left: 960px"></div>
+      <div class="rivet" style="top: 29px; left: 1420px"></div>
+      <div class="rivet" style="top: 29px; right: 105px"></div>
+      <div class="rivet" style="bottom: 29px; left: 105px"></div>
+      <div class="rivet" style="bottom: 29px; right: 105px"></div>
+      <div class="rivet" style="top: 105px; left: 29px"></div>
+      <div class="rivet" style="top: 540px; left: 29px"></div>
+      <div class="rivet" style="bottom: 105px; left: 29px"></div>
+      <div class="rivet" style="top: 105px; right: 29px"></div>
+      <div class="rivet" style="top: 540px; right: 29px"></div>
+      <div class="rivet" style="bottom: 105px; right: 29px"></div>
+
+      <!-- 7. THE MASCOT (HERO CHARACTER — HIGH RESOLUTION mascot.png) -->
+      <div class="mascot-stage" id="mascotStage">
+        <div class="mascot-pedestal">
+          <img
+            src="assets/mascot.png"
+            alt="Pitty Mascot"
+            class="mascot-art"
+            id="mascotImg"
+          />
+          <div class="mascot-eye-glow"></div>
+        </div>
+      </div>
+
+      <!-- 8. CENTER DISPLAY COLUMN (TITLE + SOCIAL MEDIA IN THE MIDDLE) -->
+      <div class="center-display-column">
+        <!-- BOLD "PLAY ⚙ STREAM ⚙ CONQUER" RIBBON -->
+        <div class="brand-crest-box">
+          <svg class="crest-gear" viewBox="0 0 100 100" fill="none">
+            <circle
+              cx="50"
+              cy="50"
+              r="36"
+              fill="#3A2112"
+              stroke="#E5A842"
+              stroke-width="6"
+            />
+            <circle cx="50" cy="50" r="14" fill="#E5A842" />
+            <g fill="#E5A842">
+              <rect x="45" y="4" width="10" height="9" rx="1" />
+              <rect x="45" y="87" width="10" height="9" rx="1" />
+              <rect x="4" y="45" width="9" height="10" rx="1" />
+              <rect x="87" y="45" width="9" height="10" rx="1" />
+            </g>
+          </svg>
+          <span class="crest-text-bold">PLAY ⚙ STREAM ⚙ CONQUER</span>
+          <svg class="crest-gear" viewBox="0 0 100 100" fill="none">
+            <circle
+              cx="50"
+              cy="50"
+              r="36"
+              fill="#3A2112"
+              stroke="#E5A842"
+              stroke-width="6"
+            />
+            <circle cx="50" cy="50" r="14" fill="#E5A842" />
+            <g fill="#E5A842">
+              <rect x="45" y="4" width="10" height="9" rx="1" />
+              <rect x="45" y="87" width="10" height="9" rx="1" />
+              <rect x="4" y="45" width="9" height="10" rx="1" />
+              <rect x="87" y="45" width="9" height="10" rx="1" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Main STARTING SOON Signboard -->
+        <div class="title-banner">
+          <div class="title-wood-plaque"></div>
+          <h1 class="main-title" id="mainTitle">STARTING SOON</h1>
+          <!-- Wind particles canvas for title -->
+          <canvas class="title-sparks-canvas" id="titleSparksCanvas"></canvas>
+        </div>
+
+        <!-- Sub-banner -->
+        <div class="sub-banner">
+          <div class="sub-banner-badge">
+            <span class="sub-title" id="subTitle"
+              >THE BROADCAST WILL BEGIN SHORTLY</span
+            >
+          </div>
+        </div>
+
+        <!-- SOCIAL MEDIA STATION (PLACED RIGHT IN THE MIDDLE OF THE SCREEN) -->
+        <div class="middle-social-panel">
+          <div class="social-wood-card-middle">
+            <div class="social-rivet sr-tl"></div>
+            <div class="social-rivet sr-tr"></div>
+            <div class="social-rivet sr-bl"></div>
+            <div class="social-rivet sr-br"></div>
+
+            <!-- Twitch -->
+            <div class="social-badge-item">
+              <div class="social-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M2.149 0l-1.612 4.119v16.8h5.331v3.081h3.201l3.198-3.081h4.269l6.415-6.425v-14.494h-20.802zm18.669 13.371l-3.734 3.737h-5.334l-3.201 3.081v-3.081h-3.731v-14.908h16v11.171zm-9.068-7.794h2.133v6.415h-2.133v-6.415zm5.333 0h2.134v6.415h-2.134v-6.415z"
+                  />
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-name">TWITCH</span>
+                <span class="social-handle">@pittyOfficial</span>
+              </div>
+            </div>
+
+            <!-- YouTube -->
+            <div class="social-badge-item">
+              <div class="social-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                  />
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-name">YOUTUBE</span>
+                <span class="social-handle">@pittyOfficial</span>
+              </div>
+            </div>
+
+            <!-- TikTok -->
+            <div class="social-badge-item">
+              <div class="social-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                  />
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-name">TIKTOK</span>
+                <span class="social-handle">@pittyOfficial</span>
+              </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="social-badge-item">
+              <div class="social-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-name">INSTAGRAM</span>
+                <span class="social-handle">@pittyOfficial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Stream Standby Pulse & Clock -->
+        <div class="stream-status-pill">
+          <div class="status-dot"></div>
+          <span class="status-text" id="statusText"
+            >SIGNAL ACQUIRED • TRANSMISSION STANDBY</span
+          >
+          <span class="status-time" id="statusTime">00:00</span>
+        </div>
+      </div>
+      <!-- Rope Banner across the top frame -->
+      <div class="rope-banner" aria-hidden="true">
+        <svg class="rope-line" viewBox="0 0 1920 60" preserveAspectRatio="none">
+          <path d="M0 20 Q240 50, 480 18 Q720 50, 960 20 Q1200 50, 1440 18 Q1680 50, 1920 22" stroke="#3A2112" stroke-width="5" fill="none" opacity="0.7" stroke-linecap="round"/>
+          <path d="M0 20 Q240 50, 480 18 Q720 50, 960 20 Q1200 50, 1440 18 Q1680 50, 1920 22" stroke="#5E2A0A" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round" stroke-dasharray="4 8"/>
+          <!-- Rope knot decorations -->
+          <circle cx="480" cy="18" r="7" fill="#3A2112" stroke="#B77A28" stroke-width="2" opacity="0.85"/>
+          <circle cx="960" cy="20" r="7" fill="#3A2112" stroke="#B77A28" stroke-width="2" opacity="0.85"/>
+          <circle cx="1440" cy="18" r="7" fill="#3A2112" stroke="#B77A28" stroke-width="2" opacity="0.85"/>
+        </svg>
+        <!-- Hanging tags from rope -->
+        <div class="rope-tag rt-1">⚙</div>
+        <div class="rope-tag rt-2">★</div>
+        <div class="rope-tag rt-3">⚙</div>
+      </div>
+
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
